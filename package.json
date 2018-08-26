@@ -10,7 +10,6 @@
   ],
   "repository": "Rowno/react-id",
   "license": "ISC",
-  "private": true,
   "main": "commonjs/index.js",
   "module": "esm/index.js",
   "sideEffects": false,
