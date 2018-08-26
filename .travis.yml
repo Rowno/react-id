@@ -1,0 +1,14 @@
+language: node_js
+node_js:
+  - "8"
+  - "10"
+cache:
+  yarn: true
+  directories:
+    - node_modules
+install:
+  - yarn install --frozen-lockfile
+script:
+  - yarn test
+  - yarn build
+  - yarn size-limit

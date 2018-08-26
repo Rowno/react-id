@@ -1,0 +1,83 @@
+{
+  "name": "react-id",
+  "version": "0.0.0",
+  "description": "React component for generating stable unique IDs",
+  "author": "Roland Warmerdam (https://roland.codes)",
+  "keywords": [
+    "react",
+    "id",
+    "uid"
+  ],
+  "repository": "Rowno/react-id",
+  "license": "ISC",
+  "private": true,
+  "main": "commonjs/index.js",
+  "module": "esm/index.js",
+  "sideEffects": false,
+  "files": [
+    "commonjs",
+    "esm"
+  ],
+  "scripts": {
+    "test": "xo && ava",
+    "prepublishOnly": "yarn clean && yarn build",
+    "build-commonjs": "BABEL_ENV=commonjs babel src --out-dir commonjs --source-maps inline",
+    "build-esm": "BABEL_ENV=esm babel src --out-dir esm --source-maps inline",
+    "build": "concurrently --names 'commonjs,esm' 'yarn build-commonjs' 'yarn build-esm'",
+    "clean": "rm -rf commonjs esm"
+  },
+  "dependencies": {
+    "prop-types": "^15.6.2"
+  },
+  "peerDependencies": {
+    "react": "^16.3.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "7.0.0-rc.1",
+    "@babel/core": "7.0.0-rc.1",
+    "@babel/plugin-proposal-class-properties": "7.0.0-rc.1",
+    "@babel/preset-env": "7.0.0-rc.1",
+    "@babel/preset-react": "7.0.0-rc.1",
+    "@babel/register": "7.0.0-rc.1",
+    "ava": "^1.0.0-beta.7",
+    "babel-eslint": "^8.2.6",
+    "concurrently": "^4.0.0",
+    "enzyme": "^3.5.0",
+    "enzyme-adapter-react-16": "^1.3.0",
+    "eslint-config-xo-react": "^0.17.0",
+    "eslint-plugin-react": "^7.11.1",
+    "react": "^16.4.2",
+    "react-dom": "^16.4.2",
+    "react-test-renderer": "^16.4.2",
+    "size-limit": "^0.19.2",
+    "xo": "^0.22.0"
+  },
+  "xo": {
+    "parser": "babel-eslint",
+    "extends": "xo-react",
+    "envs": [
+      "node",
+      "browser"
+    ],
+    "prettier": true,
+    "space": true,
+    "semicolon": false,
+    "settings": {
+      "react": {
+        "version": "16.3.0"
+      }
+    }
+  },
+  "ava": {
+    "require": [
+      "@babel/register",
+      "./tools/enzyme-config"
+    ]
+  },
+  "size-limit": [
+    {
+      "path": "esm/index.js",
+      "limit": "2 KB"
+    }
+  ]
+}
