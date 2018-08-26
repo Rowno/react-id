@@ -24,7 +24,8 @@
     "build-commonjs": "BABEL_ENV=commonjs babel src --out-dir commonjs --source-maps inline",
     "build-esm": "BABEL_ENV=esm babel src --out-dir esm --source-maps inline",
     "build": "concurrently --names 'commonjs,esm' 'yarn build-commonjs' 'yarn build-esm'",
-    "clean": "rm -rf commonjs esm"
+    "clean": "rm -rf commonjs esm",
+    "dev": "docz dev"
   },
   "dependencies": {
     "prop-types": "^15.6.2"
@@ -42,6 +43,7 @@
     "ava": "^1.0.0-beta.7",
     "babel-eslint": "^8.2.6",
     "concurrently": "^4.0.0",
+    "docz": "^0.10.3",
     "enzyme": "^3.5.0",
     "enzyme-adapter-react-16": "^1.3.0",
     "eslint-config-xo-react": "^0.17.0",

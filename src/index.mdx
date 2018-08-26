@@ -1,0 +1,51 @@
+---
+name: react-id
+route: /
+---
+
+import { Playground, PropsTable } from 'docz'
+import { Id, IdProvider } from './'
+
+## Id
+
+<Playground>
+  <Id>
+    {id => (
+      <div>
+        <label htmlFor={id}>Email:</label>{' '}
+        <input type="email" id={id} />
+      </div>
+    )}
+  </Id>
+  <Id>
+    {id => (
+      <div>
+        <label htmlFor={id}>Password:</label>{' '}
+        <input type="password" id={id} />
+      </div>
+    )}
+  </Id>
+</Playground>
+
+## IdProvider
+
+<Playground>
+  <IdProvider prefix="😍-">
+    <Id>
+      {id => (
+        <div>
+          <label htmlFor={id}>Email:</label>{' '}
+          <input type="email" id={id} />
+        </div>
+      )}
+    </Id>
+    <Id>
+      {id => (
+        <div>
+          <label htmlFor={id}>Password:</label>{' '}
+          <input type="password" id={id} />
+        </div>
+      )}
+    </Id>
+  </IdProvider>
+</Playground>
