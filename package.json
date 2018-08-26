@@ -1,6 +1,6 @@
 {
   "name": "react-id",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "React component for generating stable unique IDs",
   "author": "Roland Warmerdam (https://roland.codes)",
   "keywords": [
