@@ -1,6 +1,6 @@
-import React, {Component} from 'react'
+import React, {Component, ReactNode} from 'react'
 import PropTypes from 'prop-types'
-import {Provider, defaultPrefix} from './id-context'
+import {Provider, defaultPrefix, IdContext} from './id-context'
 
 export default class IdProvider extends Component {
   static propTypes = {
@@ -12,8 +12,15 @@ export default class IdProvider extends Component {
     prefix: defaultPrefix
   }
 
+  props: {
+    children: ReactNode,
+    prefix?: string
+  }
+
+  idContext: IdContext
+
   constructor(props) {
-    super()
+    super(props)
 
     this.idContext = {
       counter: 1,

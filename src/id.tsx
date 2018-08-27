@@ -1,6 +1,6 @@
-import React, {Component} from 'react'
+import React, {Component, ReactNode} from 'react'
 import PropTypes from 'prop-types'
-import {Consumer} from './id-context'
+import {Consumer, IdContext} from './id-context'
 
 class IdConsumer extends Component {
   static propTypes = {
@@ -11,8 +11,15 @@ class IdConsumer extends Component {
     }).isRequired
   }
 
+  props: {
+    children: (id: string) => ReactNode,
+    idContext: IdContext
+  }
+
+  id: string
+
   constructor(props) {
-    super()
+    super(props)
     const {idContext} = props
 
     this.id = idContext.prefix + idContext.counter
@@ -26,7 +33,12 @@ class IdConsumer extends Component {
 
 export default class Id extends Component {
   static propTypes = {
+    /** Render props function that gets passed the ID */
     children: PropTypes.func.isRequired
+  }
+
+  props: {
+    children: (id: string) => ReactNode
   }
 
   render() {

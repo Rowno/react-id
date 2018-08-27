@@ -12,6 +12,7 @@
   "license": "ISC",
   "main": "commonjs/index.js",
   "module": "esm/index.js",
+  "types": "types/index.d.ts",
   "sideEffects": false,
   "files": [
     "commonjs",
@@ -38,7 +39,11 @@
     "@babel/plugin-proposal-class-properties": "7.0.0-rc.1",
     "@babel/preset-env": "7.0.0-rc.1",
     "@babel/preset-react": "7.0.0-rc.1",
+    "@babel/preset-typescript": "7.0.0-rc.1",
     "@babel/register": "7.0.0-rc.1",
+    "@types/enzyme": "^3.1.13",
+    "@types/react": "^16.4.12",
+    "@types/react-test-renderer": "^16.0.2",
     "ava": "^1.0.0-beta.7",
     "babel-eslint": "^8.2.6",
     "concurrently": "^4.0.0",
@@ -46,34 +51,65 @@
     "enzyme": "^3.5.0",
     "enzyme-adapter-react-16": "^1.3.0",
     "eslint-config-xo-react": "^0.17.0",
+    "eslint-config-xo-typescript": "^0.1.0",
     "eslint-plugin-react": "^7.11.1",
+    "eslint-plugin-typescript": "^0.12.0",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
     "react-test-renderer": "^16.4.2",
     "size-limit": "^0.19.2",
+    "typescript": "^3.0.1",
+    "typescript-eslint-parser": "^18.0.0",
     "xo": "^0.22.0"
   },
   "xo": {
     "parser": "babel-eslint",
-    "extends": "xo-react",
+    "extends": [
+      "xo-react",
+      "xo-typescript"
+    ],
     "envs": [
       "node",
       "browser"
     ],
-    "prettier": true,
     "space": true,
     "semicolon": false,
     "settings": {
       "react": {
         "version": "16.3.0"
+      },
+      "import/resolver": {
+        "node": {
+          "extensions": [
+            ".js",
+            ".jsx",
+            ".ts",
+            ".tsx"
+          ]
+        }
+      },
+      "import/parsers": {
+        "typescript-eslint-parser": [
+          ".ts",
+          ".tsx"
+        ]
       }
     }
   },
   "ava": {
+    "files": [
+      "test/**/*.{js,ts,tsx}"
+    ],
     "require": [
-      "@babel/register",
-      "./tools/enzyme-config"
+      "./test/_register"
+    ],
+    "babel": {
+      "extensions": [
+        "js",
+        "ts",
+        "tsx"
     ]
+    }
   },
   "size-limit": [
     {

@@ -7,4 +7,9 @@ const {Provider, Consumer} = React.createContext({
   prefix: defaultPrefix
 })
 
-export {Provider, Consumer, defaultPrefix}
+interface IdContext {
+  counter: number,
+  prefix: string
+}
+
+export {Provider, Consumer, defaultPrefix, IdContext}
