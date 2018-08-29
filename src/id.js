@@ -2,6 +2,23 @@ import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 import {Consumer} from './id-context'
 
+/**
+ * @typedef {import('./id-context').IdContext} IdContext
+ */
+
+/**
+ * @callback renderProps
+ * @param {string} id
+ * @returns {React.ReactNode}
+ */
+
+/**
+ * @typedef {object} IdConsumerProps
+ * @prop {renderProps} children
+ * @prop {IdContext} idContext
+ *
+ * @extends {Component<IdConsumerProps>}
+ */
 class IdConsumer extends Component {
   static propTypes = {
     children: PropTypes.func.isRequired,
@@ -11,8 +28,9 @@ class IdConsumer extends Component {
     }).isRequired
   }
 
+  /** @param {IdConsumerProps} props Properties */
   constructor(props) {
-    super()
+    super(props)
     const {idContext} = props
 
     this.id = idContext.prefix + idContext.counter
@@ -24,6 +42,12 @@ class IdConsumer extends Component {
   }
 }
 
+/**
+ * @typedef {object} IdProps
+ * @prop {renderProps} children
+ *
+ * @extends {Component<IdProps>}
+ */
 export default class Id extends Component {
   static propTypes = {
     children: PropTypes.func.isRequired
