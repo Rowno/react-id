@@ -1,5 +1,5 @@
 import test from 'ava'
-import React, {Fragment} from 'react'
+import React from 'react'
 import enzyme from 'enzyme'
 import render from 'react-test-renderer'
 import {Id, IdProvider} from '../src'
@@ -23,7 +23,7 @@ test('generates ids', t => {
 
 test('provider resets the counter', t => {
   const component = enzyme.render(
-    <Fragment>
+    <>
       <IdProvider>
         <div className="provider1">
           <Id>{id => <div className="one" id={id} />}</Id>
@@ -36,7 +36,7 @@ test('provider resets the counter', t => {
           <Id>{id => <div className="two" id={id} />}</Id>
         </div>
       </IdProvider>
-    </Fragment>
+    </>
   )
   t.is(component.find('.provider1 .one').prop('id'), '🆔id-1')
   t.is(component.find('.provider2 .one').prop('id'), '🆔id-1')
